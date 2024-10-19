@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .car-form {
+            max-width: 600px;
+            margin: 50px auto; /* Centraliza a forma na página */
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex; /* Adiciona flexbox */
+            flex-direction: column; /* Organiza os elementos em coluna */
+            align-items: center; /* Centraliza os itens horizontalmente */
+        }
+        
+        .car-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0096c7;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+            text-align: center; /* Centraliza o conteúdo da classe form-group */
+            width: 100%; /* Garante que as labels e campos ocupem toda a largura */
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        input[type="file"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="file"]:focus,
+        textarea:focus {
+            border-color: #0096c7;
+            outline: none;
+        }
+        
+        .btn-primary {
+            background-color: #0096c7;
+            color: white;
+            border: none;
+            padding: 10px 15px; /* Padding ajustado */
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: auto; /* Mudei para auto para que o botão se ajuste ao tamanho do conteúdo */
+            margin: 10px 0; /* Margem para espaçamento vertical */
+            text-align: center; /* Centraliza o texto no botão */
+        }
+        
+        .buttons-container {
+            display: flex; /* Usando flexbox para centralizar os botões */
+            flex-direction: column; /* Organiza os botões em coluna */
+            align-items: center; /* Centraliza os botões horizontalmente */
+            width: 100%; /* Garante que o container ocupa toda a largura */
+        }
+        
+        .btn-primary:hover {
+            background-color: #007bb5;
+    } 
+    </style>
+
+    <div class="car-form">
+        <h2>Cadastrar Carro</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <table>
+                <tr>
+                    <td class="form-group">
+                        <label>Marca:</label>
+                        {{ form.brand }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form-group">
+                        <label>Modelo:</label>
+                        {{ form.model }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form-group">
+                        <label>Ano de Fabricação:</label>
+                        {{ form.factory_year }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form-group">
+                        <label>Ano do Modelo:</label>
+                        {{ form.model_year }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form-group">
+                        <label>Placa:</label>
+                        {{ form.plate }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form-group">
+                        <label>Valor:</label>
+                        {{ form.value }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form-group">
+                        <label>Foto:</label>
+                        {{ form.photo }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form-group">
+                        <label>Descrição:</label>
+                        {{ form.bio }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form-group">
+                        <input type="submit" value="Cadastrar" class="btn btn-primary">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+{% endblock %}
+
+
+<!-- e -->

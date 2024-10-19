@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .login-form {
+            max-width: 400px;
+            margin: 100px auto; /* Centraliza verticalmente */
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px; /* Aumenta o arredondamento */
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+        }
+        
+        h2 {
+            text-align: center;
+            color: #0096c7;
+            margin-bottom: 20px; /* Espaçamento inferior */
+        }
+        
+        .form-group {
+            margin-bottom: 20px; /* Espaçamento entre os grupos de campos */
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px; /* Espaçamento abaixo do label */
+            color: #333; /* Cor do texto do label */
+        }
+        
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px; /* Arredondamento nos campos de input */
+            box-sizing: border-box; /* Inclui o padding no cálculo da largura */
+        }
+        
+        input[type="submit"] {
+            background-color: #0096c7;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 5px; /* Arredondamento do botão */
+            transition: background-color 0.3s; /* Transição suave para o hover */
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #007a9a;
+        }    
+    </style>
+
+    <div class="login-form">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                {{ login_form.username.errors }}
+                <label>Usuário: </label>
+                {{ login_form.username }}
+            </div>
+
+            <div class="form-group">
+                {{ login_form.password.errors }}
+                <label>Senha: </label>
+                {{ login_form.password }}
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Entrar">
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+<!-- e -->

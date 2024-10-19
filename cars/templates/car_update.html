@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .car-form {
+            max-width: 600px; /* Limite a largura máxima do formulário */
+            margin: 50px auto; /* Centraliza a forma na página */
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column; /* Organiza os elementos em coluna */
+            align-items: center; /* Centraliza os itens horizontalmente */
+        }
+        
+        .car-form h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0096c7;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+            text-align: center; /* Centraliza o conteúdo da classe form-group */
+            width: 100%; /* Garante que as labels e campos ocupem toda a largura */
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        input[type="file"],
+        textarea {
+            width: calc(100% - 20px); /* Ajusta a largura para não se esticar até a borda */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="file"]:focus,
+        textarea:focus {
+            border-color: #0096c7;
+            outline: none;
+        }
+        
+        .btn {
+            display: inline-block; /* Garante que os botões se comportem como blocos */
+            background-color: #0096c7; /* Cor de fundo padrão */
+            color: #fff; /* Cor do texto */
+            border: none; /* Sem borda */
+            padding: 10px 20px; /* Espaçamento interno uniforme */
+            font-size: 16px; /* Tamanho da fonte */
+            border-radius: 4px; /* Bordas arredondadas */
+            cursor: pointer; /* Cursor de mão ao passar o mouse */
+            transition: background-color 0.3s ease-in-out; /* Efeito de transição */
+            text-decoration: none; /* Remove o sublinhado */
+            margin: 5px; /* Margem entre os botões */
+        }
+        
+        .btn:hover {
+            background-color: #007bb5; /* Cor ao passar o mouse */
+        }
+        
+        .btn-danger {
+            background-color: #d9534f; /* Cor para o botão de deletar */
+        }
+        
+        .btn-danger:hover {
+            background-color: #d2221c; /* Efeito ao passar o mouse */
+        }
+        
+        .btn-secondary {
+            background-color: #6c757d; /* Cor para o botão de cancelar */
+        }
+        
+        .btn-secondary:hover {
+            background-color: #5a6268; /* Efeito ao passar o mouse */
+        }
+        
+        .buttons-container {
+            display: flex;
+            flex-direction: column; /* Alinha os botões verticalmente */
+            align-items: center; /* Centraliza os botões */
+            margin-top: 20px;
+        }
+    </style>
+
+    <div class="car-form">
+    <h1>Editar Carro</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label>Marca:</label>
+            {{ form.brand }}
+        </div>
+
+        <div class="form-group">
+            <label>Modelo:</label>
+            {{ form.model }}
+        </div>
+
+        <div class="form-group">
+            <label>Ano de Fabricação:</label>
+            {{ form.factory_year }}
+        </div>
+
+        <div class="form-group">
+            <label>Ano do Modelo:</label>
+            {{ form.model_year }}
+        </div>
+
+        <div class="form-group">
+            <label>Placa:</label>
+            {{ form.plate }}
+        </div>
+
+        <div class="form-group">
+            <label>Valor:</label>
+            {{ form.value }}
+        </div>
+
+        <div class="form-group">
+            <label>Foto:</label>
+            {{ form.photo }}
+        </div>
+
+        <div class="form-group">
+            <label>Descrição:</label>
+            {{ form.bio }}
+        </div>
+
+        <div class="buttons-container">
+            <input type="submit" value="Salvar Alterações" class="btn btn-primary">
+            <a href="{% url 'car_delete' pk=object.pk %}" class="btn btn-danger">Deletar Carro</a>
+            <a href="{% url 'cars_list' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+    </div>
+{% endblock %}
+
+ <!-- e -->
